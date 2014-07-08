@@ -36,7 +36,7 @@ UIBase.prototype.setProps = function(_value){
 };
 
 UIBase.prototype.inject = function(_subName, _props){
-	if(this.subs[_subName].length){
+	if(this.subs[_subName].length){ // if stack
 		_.each(this.subs[_subName], function(v,k){
 			this.subs[_subName][k].setProps(_props[k])	;
 		});
@@ -61,7 +61,9 @@ UIBase.prototype.delegateEvents = function(_type, _selector){
 UIBase.prototype.initializeElms = function(){
 	_.each(this.SELECTORS, function(_selector, _name){
 		var $elms = $(_selector, this.$el);
-		this.$elms[_name + ( $elms.length && "Stack" || "" )] = $elms;
+		// IF SELECTOR MATCHES MULTIPLE THEN YOU HAVE A STACK
+		// E.G TileStack; or ButtonStack
+		this.$elms[_name + ( $elms.length && "Stack" || "" )] = $elms; 
 	});
 	return this;
 };
