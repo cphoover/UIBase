@@ -7,7 +7,7 @@ function UIBase(_$elm) {
 
 	this.$elms   = {};
 	this.subs    = {};
-
+	/** @todo make array so multiple widgets can be bound **/
 	this.$elm.data("ua.bind", this);
 
 	this.on      = this.$elm.on.bind      ( this.$elm);
