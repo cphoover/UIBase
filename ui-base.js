@@ -22,8 +22,8 @@ function UIBase(_$elm) {
 UIBase.prototype.createEventHandlers = function() {
 	var self = this;
 	_.forEach(this.constructor.prototype, function(fn, name) {
-		var m;
-		if (!!(m = /^on([A-Z]\w*)/.exec(name))) {
+		var m = /^on([A-Z]\w*)/.exec(name);
+		if (m) {
 			self.on(m[1].toLowerCase(), fn.bind(self));
 		}
 	});
